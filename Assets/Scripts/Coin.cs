@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-
     public int value;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Debug.Log("Entered coin");
     }
 
     // Update is called once per frame
@@ -18,10 +18,14 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
-        {
-            FindObjectOfType<GameManager>().AddCoin(value);
-            Destroy(gameObject);
-        }
+    Debug.Log("Collision detected with: " + other.name); 
+
+    if (other.CompareTag("Player")) 
+    {
+        Debug.Log("Player collected the coin!"); 
+        FindObjectOfType<GameManager>().AddCoin(value);
+        Destroy(gameObject);
     }
+    }
+
 }
